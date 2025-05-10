@@ -18,7 +18,6 @@ const routes: Routes = [
   ]
 },
   {path:'login', component: LoginComponent},
-  {path:'', redirectTo:'acceuil/users', pathMatch:'full'},
   {path:'**', redirectTo:'acceuil'},
 
 
