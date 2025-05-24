@@ -1,0 +1,58 @@
+/* Style du conteneur principal - centrage dynamique */
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 2rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Style de la carte de formulaire */
+.col-md-4 {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.col-md-4:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Animation d'entrée */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 576px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .col-md-4 {
+    padding: 1.5rem;
+  }
+}
