@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Liste des Raporteurs</h2>
+  <div class="list">
+    <div *ngFor="let user of users" 
+         class="item" 
+         [class.selected]="selectedUser === user"
+         (click)="selectUser(user)">
+      <span class="name">{{user.username}}</span>
+      <span class="detail">{{user.email}}</span>
+    </div>
+  </div>
+
+  <h2>Liste des Débiteurs</h2>
+  <div class="list">
+    <div *ngFor="let debiteur of debiteurs" 
+         class="item" 
+         [class.selected]="selectedDebiteur === debiteur"
+         (click)="selectDebiteur(debiteur)">
+      <span class="name">{{debiteur.personne.nom}} {{debiteur.personne.prenom}}</span>
+      <!-- <span class="dossier">{{debiteur.dossier.numero}} </span> -->
+      <span class="numero">num Contentieux:{{debiteur.numContentieux}} </span>
+      <span class="detail">Dette: {{debiteur.soldeRecouvrement}} €</span>
+    </div>
+  </div>
+</div>
+
+  <button class="assign-btn" 
+          (click)="assignReporter()"
+          [disabled]="!selectedUser || !selectedDebiteur">
+    Affecter un rapporteur
+  </button>

@@ -1,0 +1,126 @@
+.operations-container {
+  padding: 25px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+}
+
+/* En-tête */
+.operations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Indicateur de chargement */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  color: #2E8C72;
+  font-size: 1.1rem;
+}
+
+.loading i {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Message aucune opération */
+.no-operations {
+  text-align: center;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #6c757d;
+  font-size: 1.1rem;
+  border: 1px dashed #dee2e6;
+}
+
+.no-operations i {
+  font-size: 2rem;
+  color: #36BF71;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Tableau */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+th {
+  background-color: #2E8C72;
+  color: white;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Lignes alternées */
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Effet hover */
+tr:hover td {
+  background-color: #f5fdf9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(46, 140, 114, 0.1);
+}
+
+/* Cellules spécifiques */
+td:first-child {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Montants négatifs */
+.negative {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .operations-container {
+    padding: 15px;
+  }
+  
+  th, td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}

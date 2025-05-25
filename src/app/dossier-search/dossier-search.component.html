@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <div class="card shadow mb-4">
+  <div class="card-header">
+  <h3>Recherche de Dossier</h3>
+</div>
+    <div class="card-body">
+      <div class="form-group row">
+        <label for="numeroDossier" class="col-sm-2 col-form-label">Numéro Dossier</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="numeroDossier" 
+                 [(ngModel)]="numeroDossier" placeholder="Entrez le numéro de dossier">
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-primary w-100" 
+                  (click)="searchDossier()"
+                  [disabled]="isLoading">
+            <span *ngIf="!isLoading">Rechercher</span>
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Section Débiteur -->
+<div *ngIf="debiteur" class="card shadow mb-4">
+  
+  <div class="card-header">
+     <h4>Débiteur du Dossier n°{{debiteur.dossier.numero}}</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Identité</h5>
+        <p><strong>Nom complet:</strong> {{debiteur.personne.nom}} {{debiteur.personne.prenom}}</p>
+        <p><strong>CIN:</strong> {{debiteur.personne.cin || 'Non renseigné'}}</p>
+      
+      </div>
+      <div class="col-md-6">
+        <h5>Détails Contentieux</h5>
+        <p><strong>N° Contentieux:</strong> {{debiteur.numContentieux}}</p>
+        <p><strong>Date transfert:</strong> {{debiteur.dateTransfert | date:'dd/MM/yyyy'}}</p>
+        <p><strong>Solde recouvrement:</strong> {{debiteur.soldeRecouvrement | currency:'EUR':'symbol':'1.2-2'}}</p>
+        <p><strong>Rapporteur:</strong> {{debiteur.rapporteur}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section Risques -->
+  <div *ngIf="risques.length > 0" class="card shadow">
+    <div class="card-header">
+      <h4>Risques Associés</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Numéro Risque</th>
+              <th>Montant Principal</th>
+              <th>Solde Principal</th>
+              <th>Intérêts</th>
+              <th>État</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let risque of risques">
+              <td>{{risque.num}}</td>
+              <td>{{risque.montantPrincipale | currency:'EUR':'symbol':'1.2-2'}}</td>
+              <td>{{risque.soldePrincipale | currency:'EUR':'symbol':'1.2-2'}}</td>
+              <td>
+                Conv.: {{risque.interetConventionnel | currency:'EUR':'symbol':'1.2-2'}}<br>
+                Retard: {{risque.montantInteretRetard | currency:'EUR':'symbol':'1.2-2'}}
+              </td>
+              <td>{{risque.stade?.libelle || 'Non spécifié'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && numeroDossier && !debiteur" class="alert alert-warning mt-4">
+    Aucun débiteur trouvé pour le dossier n°{{numeroDossier}}
+  </div>
+</div>

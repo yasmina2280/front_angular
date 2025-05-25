@@ -1,0 +1,24 @@
+<div class="debiteur-container">
+  <button class="back-button" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i> Retour
+  </button>
+
+  <div *ngFor="let debiteur of debiteurs" class="debiteur-card">
+    <div class="debiteur-header">
+      <h4>Détails du Débiteur</h4>
+    </div>
+    <div class="debiteur-body">
+      <div class="info-block">
+        <h5>Informations Personnelles</h5>
+        <p><strong>Nom :</strong> {{debiteur.personne?.nom}} {{debiteur.personne?.prenom}}</p>
+        <p><strong>CIN :</strong> {{debiteur.personne?.cin || 'Non renseigné'}}</p>
+      </div>
+      <div class="info-block">
+        <h5>Informations Dossier</h5>
+        <p><strong>Numéro de dossier :</strong> {{debiteur.dossier?.numero}}</p>
+        <p><strong>Numéro de contentieux :</strong> {{debiteur.numContentieux}}</p>
+        <p><strong>Solde recouvrement :</strong> {{debiteur.soldeRecouvrement | currency}}</p>
+      </div>
+    </div>
+  </div>
+</div>

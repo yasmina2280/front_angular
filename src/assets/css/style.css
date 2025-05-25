@@ -1678,7 +1678,7 @@ html.menu-opened body {
 
 .home-slide {
 	position: relative;
-    background-image: url(../img/banner.png);
+    background-image: url(../img/back.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -4462,19 +4462,19 @@ html.menu-opened body {
 	border-radius: 0 0 5px 5px;
 }
 .header-navbar-rht li a.header-login:hover {
-    background-color: #f6697b;
-    border-color: #f6697b;
+    background-color:#03A678;
+    border-color: #03A678;
     color: #fff;
 }
 .header-navbar-rht li a.header-login {
     border-radius: 50px;
     text-align: center;
     font-size: 16px;
-    color: #392C7D;
+    color: #2E8C72;
     text-transform: capitalize;
     font-weight: 500;
 	min-width: 150px;
-	border: 3px solid #B4A7F5;
+	border: 3px solid #2E8C72;
 	padding: 10px 15px;
 }
 .header-navbar-rht li a.header-sign {

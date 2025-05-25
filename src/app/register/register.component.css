@@ -1,25 +1,73 @@
-.register-wrapper {
+.login-wrapper {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loginbox {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 600%;
+  max-width: 1000px;
+}
+
+.img-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.img-logo img {
+  max-height: 60px;
+}
+
+.input-block {
+  margin-bottom: 20px;
+}
+
+.pass-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.btn-start {
+  padding: 12px;
+  font-weight: 600;
+}
+
+.sign-google ul {
+  list-style: none;
+  padding: 0;
   display: flex;
   justify-content: center;
+  gap: 15px;
+}
+
+.sign-google a {
+  display: flex;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  gap: 8px;
+  color: #555;
+  text-decoration: none;
 }
 
-.register-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-.form-group {
-  margin-bottom: 1rem;
+.sign-google img {
+  height: 20px;
 }
 
 .text-danger {
-  color: #dc3545;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
+  margin-top: 5px;
 }

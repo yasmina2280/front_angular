@@ -1,1 +1,4 @@
-url:process.env['NG_APP_BASE_URL']
+export const environment = {
+  production: false,
+  apiBaseUrl: 'http://localhost:3000' 
+};

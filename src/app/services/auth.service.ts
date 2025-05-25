@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,43 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  // Login method to authenticate the user
-  login(user: User) {
-    return this.http.post<User>(`${this.apiURL}/login`, user, { observe: 'response' });
-  }
+
+  
+
+
+assignRole(username: string, role: string): Observable<any> {
+  const token = localStorage.getItem('jwt');
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.post(`http://localhost:5000/users/api/admin/assign-role`, null, {
+    params: { username, rolename: role },
+    headers
+  });
+}
+
+
+getAllUsers(): Observable<any[]> { 
+  const token = localStorage.getItem('jwt'); // Correct key
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.get<any[]>(`http://localhost:5000/users/all`, { headers }); 
+}
+
+
+
+login(user: User) {
+  return this.http.post<User>(`${this.apiURL}/login`, user, { observe: 'response' }).pipe(
+    tap(res => {
+      const jwt = res.headers.get('Authorization')!;
+      this.saveToken(jwt);
+      this.isloggedIn = true; 
+    })
+  );
+}
 
   
 
@@ -65,7 +99,8 @@ export class AuthService {
     this.token = null;  // Set to null instead of undefined
     this.isloggedIn = false;
     localStorage.removeItem('jwt');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/acceuil']);
+   
   }
 
   // Set logged user details from local storage
@@ -82,6 +117,7 @@ export class AuthService {
       if (storedToken) {
         this.token = storedToken;
         this.decodeJWT();
+        
       }
     } else {
       console.warn('localStorage is not available.');
@@ -107,5 +143,13 @@ return this.regitredUser;
 }
 validateEmail(code : string){
 return this.http.get<User>(this.apiURL+'/verifyEmail/'+code);
+}
+
+getCurrentUserRoles(): string[] {
+  // Si le token est valide et non expiré
+  if (this.token && !this.isTokenExpired()) {
+    return this.roles;
+  }
+  return []; // Retourne un tableau vide si non connecté
 }
 }

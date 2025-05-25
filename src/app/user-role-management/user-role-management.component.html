@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Gestion des rôles</h2>
+
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nom d'utilisateur</th>
+        <th>Email</th>
+        <th>Rôles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span *ngFor="let role of user.roles">{{ role.role }} </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <label>Utilisateur :</label>
+    <select [(ngModel)]="selectedUser" class="form-control">
+      <option *ngFor="let user of users" [value]="user.username">{{ user.username }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Rôle à attribuer :</label>
+    <select [(ngModel)]="selectedRole" class="form-control">
+      <option *ngFor="let role of availableRoles">{{ role }}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" (click)="assignRole()">Attribuer le rôle</button>
+</div>

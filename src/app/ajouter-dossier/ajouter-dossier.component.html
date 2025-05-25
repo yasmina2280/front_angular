@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Ajouter un dossier</h2>
+  <form [formGroup]="dossierForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="etat">État :</label>
+      <input id="etat" formControlName="etat" type="text" required placeholder="Saisir l'état du dossier">
+    </div>
+
+    <button type="submit" [disabled]="dossierForm.invalid">Ajouter</button>
+  </form>
+
+  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2>Gestion des Débiteurs</h2>
+    <p class="lead">Sélectionnez une méthode de recherche</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="options-grid">
+            <div *ngFor="let option of searchOptions" 
+                 class="option-card" 
+                 (click)="selectOption(option.id)"
+                 [class.selected]="selectedOption === option.id">
+              <i class="fas {{option.icon}} fa-2x mb-2"></i>
+              <h5>{{option.name}}</h5>
+            </div>
+          </div>
+
+          <div *ngIf="selectedOption !== null" class="mt-4">
+            <div class="input-group">
+              <input type="text" 
+                     class="form-control" 
+                     [(ngModel)]="searchValue"
+                     [placeholder]="'Entrez ' + getOptionName(selectedOption).toLowerCase() + '...'"
+                     (keyup.enter)="search()">
+              <button class="btn btn-primary" (click)="search()">
+                <i class="fas fa-search"></i> Rechercher
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
