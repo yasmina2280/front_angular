@@ -62,12 +62,11 @@ selectDebiteur(debiteur: any) {
     });
   }
 
-
-
 assignReporter() {
     if (this.selectedUser && this.selectedDebiteur) {
-        const nomRapporteur = this.selectedUser.username; // ou autre propriété string
-console.log("Debtor ID being assigned:",this.selectedDebiteur.numContentieux);
+        const nomRapporteur = this.selectedUser.username;
+        console.log("Debtor ID being assigned:", this.selectedDebiteur.numContentieux);
+        
         this.debiteurService.assignReporter(
             this.selectedDebiteur.numContentieux,
             nomRapporteur
@@ -78,7 +77,11 @@ console.log("Debtor ID being assigned:",this.selectedDebiteur.numContentieux);
                 if (index !== -1) {
                     this.debiteurs[index] = updatedDebiteur;
                 }
-                
+
+                // ✅ Alerte de confirmation
+                alert(`Rapporteur ${nomRapporteur} assigné au débiteur ${updatedDebiteur.numContentieux}.`);
+
+                // Réinitialisation
                 this.selectedUser = null;
                 this.selectedDebiteur = null;
             },
@@ -86,5 +89,5 @@ console.log("Debtor ID being assigned:",this.selectedDebiteur.numContentieux);
         });
     }
 }
-  
+
 }

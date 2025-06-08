@@ -1,33 +1,74 @@
+
+
+
+
 .login-wrapper {
-  background-color: #f5f5f5;
+   background-color: #f5f5f5;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .loginbox {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  width: 600%;
-  max-width: 1000px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 750px;
+  transition: transform 0.3s;
+}
+
+.loginbox:hover {
+  transform: translateY(-2px);
 }
 
 .img-logo {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.img-logo img {
-  max-height: 60px;
+
+
+.back-home {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
 }
 
 .input-block {
   margin-bottom: 20px;
+}
+
+.form-control {
+  height: 45px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border 0.3s;
+}
+
+.form-control:focus {
+  border-color:#36BF71;
+
+  outline: none;
+}
+
+.form-control-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
 }
 
 .pass-group {
@@ -36,38 +77,136 @@
 
 .toggle-password {
   position: absolute;
-  right: 15px;
   top: 50%;
+  right: 15px;
   transform: translateY(-50%);
   cursor: pointer;
+  color: #888;
+}
+
+.text-danger {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #e74c3c;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.custom_check {
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom_check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom_check .checkmark {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.custom_check input:checked ~ .checkmark {
+  background-color:#36BF71;
+}
+
+.custom_check .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom_check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom_check .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-padding {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .btn-start {
   padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
   font-weight: 600;
+  background-color: #36BF71;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-start:hover {
+  background-color: #216e43;
+}
+
+.google-bg {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.google-bg a {
+  font-size: 0.95rem;
+  color: #666;
 }
 
 .sign-google ul {
   list-style: none;
   padding: 0;
+  margin-top: 12px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
 }
 
-.sign-google a {
+.sign-google li a {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #555;
+  gap: 10px;
+  background: #f1f1f1;
+  padding: 8px 16px;
+  border-radius: 6px;
   text-decoration: none;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.sign-google li a:hover {
+  background: #e0e0e0;
 }
 
 .sign-google img {
   height: 20px;
 }
 
-.text-danger {
-  font-size: 0.85rem;
-  margin-top: 5px;
+p a {
+  color:#36BF71;
+  text-decoration: none;
+}
+
+a{
+ color:#36BF71; 
 }

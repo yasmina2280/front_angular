@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { User } from '../model/user.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import * as feather from 'feather-icons';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,10 +26,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class RegisterComponent implements OnInit {
   public user = new User();
-  confirmPassword?: string;
   myForm!: FormGroup;
   err: any;
   loading: boolean = false;
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,35 +41,37 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    feather.replace();
   }
 
- initForm() {
-  this.myForm = this.formBuilder.group({
-    username: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', [Validators.required]],
-  }, { 
-    validators: this.passwordMatchValidator('password', 'confirmPassword') 
-  });
-}
+  initForm() {
+    this.myForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
+    }, { 
+      validators: this.passwordMatchValidator('password', 'confirmPassword') 
+    });
+  }
 
-passwordMatchValidator(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
-    const control = formGroup.controls[controlName];
-    const matchingControl = formGroup.controls[matchingControlName];
+  passwordMatchValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
 
-    if (matchingControl.errors && !matchingControl.errors['passwordMismatch']) {
-      return;
-    }
+      if (matchingControl.errors && !matchingControl.errors['passwordMismatch']) {
+        return;
+      }
 
-    if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ passwordMismatch: true });
-    } else {
-      matchingControl.setErrors(null);
-    }
-  };
-}
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ passwordMismatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
   onRegister() {
     if (this.myForm.invalid) {
       this.toastr.error('Veuillez remplir correctement le formulaire', 'Erreur');
@@ -93,5 +98,30 @@ passwordMatchValidator(controlName: string, matchingControlName: string) {
         }
       }
     });
+  }
+
+  togglePassword(field: 'password' | 'confirmPassword') {
+    if (field === 'password') {
+      this.showPassword = !this.showPassword;
+    } else {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
+    feather.replace();
+  }
+
+  getPasswordType(field: 'password' | 'confirmPassword'): string {
+    if (field === 'password') {
+      return this.showPassword ? 'text' : 'password';
+    } else {
+      return this.showConfirmPassword ? 'text' : 'password';
+    }
+  }
+
+  getPasswordIcon(field: 'password' | 'confirmPassword'): string {
+    if (field === 'password') {
+      return this.showPassword ? 'feather-eye-off' : 'feather-eye';
+    } else {
+      return this.showConfirmPassword ? 'feather-eye-off' : 'feather-eye';
+    }
   }
 }

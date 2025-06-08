@@ -53,17 +53,19 @@
         <div class="input-block">
           <label class="form-control-label">Password</label>
           <div class="pass-group">
-            <input
-              type="password"
-              class="form-control pass-input"
-              placeholder="Enter your password"
-              required
-              [(ngModel)]="user.password"
-              name="password"
-              #password="ngModel"
-            />
-            <span class="feather-eye toggle-password"></span>
-          </div>
+  <input
+    [type]="showPassword ? 'text' : 'password'"
+    class="form-control pass-input"
+    placeholder="Enter your password"
+    required
+    [(ngModel)]="user.password"
+    name="password"
+    #password="ngModel"
+  />
+  <mat-icon class="toggle-password" (click)="showPassword = !showPassword">
+    {{showPassword ? 'visibility_off' : 'visibility'}}
+  </mat-icon>
+</div>
           <div *ngIf="password.invalid && password.touched" class="text-danger">
             Password is required.
           </div>
@@ -79,10 +81,11 @@
 
         <div class="remember-me">
           <label class="custom_check mr-2 mb-0 d-inline-flex remember-me">
-            Remember me
-            <input type="checkbox" name="remember" />
+           Remember-me
+            <input type="checkbox" formControlName="terms" />
             <span class="checkmark"></span>
           </label>
+        
         </div>
 
         <div class="d-grid">

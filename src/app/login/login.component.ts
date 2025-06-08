@@ -11,9 +11,10 @@ import { User } from '../model/user.model';
 })
 export class LoginComponent {
   user = new User();
-  erreur = 0;
+    erreur = 0;
+  showPassword = false;
+   isChecked: boolean = false;
   message: string = "login ou mot de passe erronés..";
-
   constructor(private authService: AuthService, private router: Router) { }
 
   onLoggedin() {
