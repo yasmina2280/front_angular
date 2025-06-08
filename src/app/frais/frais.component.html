@@ -1,0 +1,54 @@
+<h2 class="text-center my-4">Frais en attente</h2>
+
+<div class="table-responsive mx-auto" style="max-width: 95%;">
+  <table class="table table-borderless table-hover">
+    <thead class="table-success">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Montant</th>
+        <th class="text-center">Matricule</th>
+        <th class="text-center">N° Dossier</th>
+        <th class="text-center">N° Risque</th>
+       
+        <th class="text-center">État</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let frais of fraisList">
+        <td class="text-center align-middle">{{ frais.id }}</td>
+        <td class="text-center align-middle">{{ frais.montant | currency:'TND':'symbol':'1.2-2' }}</td>
+        <td class="text-center align-middle">{{ frais.matricule }}</td>
+     <td class="text-center align-middle">{{ getNumeroDossier(frais) }}</td>
+
+<td class="text-center align-middle">{{ frais.risque?.num || '-' }}</td>
+
+
+        <td class="text-center align-middle">
+          <span 
+            [ngClass]="{
+              'text-success': frais.etat === 'VALIDE',
+              'text-danger': frais.etat === 'REFUSE',
+              'text-warning': frais.etat === 'EN_ATTENTE'
+            }">
+            {{ frais.etat }}
+          </span>
+        </td>
+        <td class="text-center align-middle">
+          <ng-container *ngIf="frais.etat === 'EN_ATTENTE'">
+            <button 
+              class="btn btn-success btn-sm me-1" 
+              (click)="validerFrais(frais.id)">
+              ✔ Valider
+            </button>
+            <button 
+              class="btn btn-danger btn-sm" 
+              (click)="refuserFrais(frais.id)">
+              ✖ Refuser
+            </button>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

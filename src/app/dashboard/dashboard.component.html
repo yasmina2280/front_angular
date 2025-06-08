@@ -75,13 +75,13 @@
    
 
     <!-- Nouvelle carte Calendrier -->
-    <div class="dashboard-card" routerLink="/calendrier">
+    <div *ngIf="isFeesResponsible" class="dashboard-card" routerLink="/gestion-frais" >
       <div class="card-icon" style="background-color: #36b9cc;">
         <i class="fas fa-calendar-alt"></i>
       </div>
-      <h3>Calendrier</h3>
-      <p>Échéances et rendez-vous</p>
-      <div class="card-badge">2 aujourd'hui</div>
+      <h3>Gestion frais</h3>
+      <p>liste et validation</p>
+      <div class="card-badge">6 frais ajouter</div>
     </div>
 
     <!-- Nouvelle carte Documents -->
@@ -94,17 +94,7 @@
     </div>
   </div>
 
-  <div class="dashboard-bottom-section">
-    <div class="recent-activities">
-      <h3><i class="fas fa-history"></i> Activités récentes</h3>
-      <ul>
-        <li>Dossier #4587 mis à jour par J. Dupont</li>
-        <li>Nouveau débiteur ajouté: Société ABC</li>
-        <li>Rapport mensuel généré</li>
-        <li>Alertes résolues: 3</li>
-        <li>Nouvelle opération créée: #OP-9872</li>
-      </ul>
-    </div>
+
 <div class="quick-actions">
   <h3><i class="fas fa-bolt"></i> Actions rapides</h3>
   
@@ -129,6 +119,18 @@
     <i class="fas fa-lock"></i> Accès réservé aux responsables des frais
   </div>
 </div>
+
+  <div class="dashboard-bottom-section">
+    <div class="recent-activities">
+      <h3><i class="fas fa-history"></i> Activités récentes</h3>
+      <ul>
+        <li>Dossier #4587 mis à jour par J. Dupont</li>
+        <li>Nouveau débiteur ajouté: Société ABC</li>
+        <li>Rapport mensuel généré</li>
+        <li>Alertes résolues: 3</li>
+        <li>Nouvelle opération créée: #OP-9872</li>
+      </ul>
+    </div>
 
   <div class="notifications-banner">
     <i class="fas fa-info-circle"></i> Mise à jour système prévue ce soir à 20h00 (durée estimée: 30 min)

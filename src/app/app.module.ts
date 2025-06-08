@@ -29,6 +29,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AjouterDossierComponent } from './ajouter-dossier/ajouter-dossier.component';
 import { ListeUtilisateursComponent } from './liste-utilisateurs/liste-utilisateurs.component';
 import { ListeDebiteursComponent } from './liste-debiteurs/liste-debiteurs.component';
+import { FraisComponent } from './frais/frais.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ListeDebiteursComponent } from './liste-debiteurs/liste-debiteurs.compo
     UnauthorizedComponent,
     AjouterDossierComponent,
     ListeUtilisateursComponent,
-    ListeDebiteursComponent
+    ListeDebiteursComponent,
+    FraisComponent
   ],
   imports: [
     BrowserModule,
