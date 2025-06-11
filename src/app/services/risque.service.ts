@@ -46,13 +46,38 @@ export class RisqueService {
 
   updateRisque(id: number, risque: Risque): Observable<Risque> {
     return this.http.put<Risque>(`${this.apiUrl}/${id}`, risque, {
-      headers: this.getAuthHeaders()
-    });
+  headers: this.getAuthHeaders()
+});
+
   }
+
+  
 
   deleteRisque(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders()
     });
   }
+
+  // Get all risques for a dossier
+getRisquesByDossier(dossierId: number): Observable<Risque[]> {
+  return this.http.get<Risque[]>(`${this.apiUrl}/dossier/${dossierId}`, {
+    headers: this.getAuthHeaders()
+  });
+}
+
+// // Get one risque by its ID
+// getRisqueById(id: number): Observable<Risque> {
+//   return this.http.get<Risque>(`${this.apiUrl}/${id}`, {
+//     headers: this.getAuthHeaders()
+//   });
+// }
+getRisqueById(id: number): Observable<Risque> {
+  return this.http.get<Risque>(`${this.apiUrl}?id=${id}`, {
+    headers: this.getAuthHeaders()
+  });
+}
+
+
+
 }

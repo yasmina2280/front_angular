@@ -5,6 +5,7 @@ import { DebiteurDto } from '../model/debiteur-dto.model';
 import { Debiteur } from '../model/debiteur.model';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
+import { CreateDebiteurRequest } from '../model/CreateDebiteurRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,12 @@ export class DebiteurService {
 
    getDebiteurs(): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiUrl}`, {
+    headers: this.getAuthHeaders()
+  });
+}
+
+creerDebiteurAvecPersonneExistante(request: CreateDebiteurRequest): Observable<Debiteur> {
+  return this.http.post<Debiteur>(`${this.apiUrl}/avec-personne-existante`, request, {
     headers: this.getAuthHeaders()
   });
 }

@@ -13,7 +13,7 @@ export class DashboardComponent {
   userRoles: string[] = [];
   isFeesResponsible: boolean = false;
 
-  constructor(private authService: AuthService,private router: Router) {}
+  constructor( public authService: AuthService,private router: Router) {}
 
   ngOnInit() {
     // Récupérer les rôles de l'utilisateur connecté

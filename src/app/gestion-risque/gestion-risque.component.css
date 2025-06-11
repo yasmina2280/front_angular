@@ -1,0 +1,112 @@
+.dossier-operations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-section {
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-btn {
+  background-color: #2E8C72;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: #036648;
+}
+
+.risques-list {
+  margin-bottom: 30px;
+}
+
+.risques-list h3 {
+  color: #2E8C72;
+  margin-bottom: 15px;
+}
+
+.risque-card {
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  border-left: 4px solid #36BF71;
+}
+
+.risque-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.risque-card.selected {
+  border-left: 4px solid #2E8C72;
+  background-color: #EEF2E9;
+}
+
+.risque-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.risque-num {
+  font-weight: bold;
+  color: #2E8C72;
+}
+
+.risque-solde {
+  font-weight: bold;
+}
+
+.risque-details {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.no-results {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.no-results i {
+  font-size: 2em;
+  color: #2E8C72;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #2E8C72;
+}

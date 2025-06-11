@@ -45,6 +45,10 @@ import { FraisComponent } from './frais/frais.component';
 
 // Interceptors
 import { DateParserInterceptor } from './date-parser-interceptor.interceptor';
+import { RecouvrementComponent } from './recouvrement/recouvrement.component';
+import { CreerDebiteurPersonneExistanteComponent } from './creer-debiteur-personne-existante/creer-debiteur-personne-existante.component';
+import { GestionRisqueComponent } from './gestion-risque/gestion-risque.component';
+import { ModifierRisqueComponent } from './modifier-risque/modifier-risque.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { DateParserInterceptor } from './date-parser-interceptor.interceptor';
     AjouterDossierComponent,
     ListeUtilisateursComponent,
     ListeDebiteursComponent,
-    FraisComponent
+    FraisComponent,
+    RecouvrementComponent,
+    CreerDebiteurPersonneExistanteComponent,
+    GestionRisqueComponent,
+    ModifierRisqueComponent
   ],
   imports: [
     // Angular Modules

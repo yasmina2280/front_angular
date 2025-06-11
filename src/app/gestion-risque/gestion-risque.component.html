@@ -1,0 +1,51 @@
+<div class="dossier-operations-container">
+  <!-- Recherche de dossier -->
+  <div class="search-section">
+    <div class="search-box">
+      <input type="number" [(ngModel)]="numeroDossier" placeholder="Numéro de dossier" class="search-input">
+      <button (click)="searchDossier()" class="search-btn">
+        <i class="fas fa-search"></i> Rechercher
+      </button>
+    </div>
+  </div>
+
+  <!-- Liste des risques -->
+  <div class="risques-list" *ngIf="risques.length > 0">
+    <h3><i class="fas fa-exclamation-triangle"></i> Risques associés</h3>
+    
+    <div class="risque-card" *ngFor="let risque of risques" 
+         [class.selected]="selectedRisque?.num === risque.num"
+         (click)="selectRisque(risque)">
+      <div class="risque-header">
+        <span class="risque-num">Risque n°{{risque.num}}</span>
+        <span class="risque-solde">{{risque.soldePrincipale | currency:'EUR':'symbol':'1.2-2'}}</span>
+      </div>
+      <div class="risque-details">
+        <span>Principal: {{risque.montantPrincipale | currency:'EUR':'symbol':'1.2-2'}}</span>
+        <span>Intérêts: {{risque.interetConventionnel | currency:'EUR':'symbol':'1.2-2'}}</span>
+      </div>
+    </div>
+  </div>
+
+<!-- Détails du risque sélectionné -->
+<div class="risque-details-container" *ngIf="selectedRisque">
+  <h4>Détails du Risque n°{{selectedRisque.num}}</h4>
+  <p><strong>Solde Principale :</strong> {{selectedRisque.soldePrincipale | currency:'EUR':'symbol':'1.2-2'}}</p>
+  <p><strong>Montant Principale :</strong> {{selectedRisque.montantPrincipale | currency:'EUR':'symbol':'1.2-2'}}</p>
+  <p><strong>Intérêt Conventionnel :</strong> {{selectedRisque.interetConventionnel | currency:'EUR':'symbol':'1.2-2'}}</p>
+  
+  <button (click)="modifierRisque()" class="btn btn-primary">Modifier</button>
+</div>
+
+  <!-- Message si aucun risque -->
+  <div class="no-results" *ngIf="numeroDossier && !isLoading && risques.length === 0">
+    <i class="fas fa-info-circle"></i> Aucun risque trouvé pour ce dossier
+  </div>
+
+  <!-- Loading indicator -->
+  <div class="loading" *ngIf="isLoading">
+    <i class="fas fa-spinner fa-spin"></i> Chargement...
+  </div>
+
+  
+</div>

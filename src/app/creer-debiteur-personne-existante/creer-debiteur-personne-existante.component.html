@@ -1,0 +1,100 @@
+<div class="container mt-4">
+  <h2>Créer un débiteur avec personne existante</h2>
+
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+    <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+    <button type="button" class="btn-close" (click)="successMessage = ''" aria-label="Close"></button>
+  </div>
+
+  <form [formGroup]="creerDebiteurForm" (ngSubmit)="creerDebiteur()" *ngIf="!isLoading">
+    <div class="mb-3">
+      <label for="personneSelect" class="form-label">Personne existante (non débiteurs) *</label>
+      <select 
+        id="personneSelect" 
+        class="form-select" 
+        formControlName="personneId"
+        [class.is-invalid]="creerDebiteurForm.get('personneId')?.invalid && creerDebiteurForm.get('personneId')?.touched"
+      >
+        <option [value]="null" disabled selected>Sélectionnez une personne</option>
+        <option *ngFor="let personne of personnes" [value]="personne.id">
+          {{ personne.nom }} {{ personne.prenom }} ({{ personne.cin }})
+        </option>
+      </select>
+      <small class="text-muted">Seules les personnes non encore déclarées comme débiteurs sont affichées</small>
+      <div *ngIf="creerDebiteurForm.get('personneId')?.invalid && creerDebiteurForm.get('personneId')?.touched" 
+           class="invalid-feedback">
+        Ce champ est obligatoire
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="numeroDossier" class="form-label">Numéro de dossier (optionnel)</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="numeroDossier" 
+        formControlName="numeroDossier"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="rapporteur" class="form-label">Rapporteur (optionnel)</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="rapporteur" 
+        formControlName="rapporteur"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="numContentieux" class="form-label">Numéro de contentieux</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="numContentieux" 
+        formControlName="numContentieux"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="dateTransfert" class="form-label">Date de transfert</label>
+      <input 
+        type="date" 
+        class="form-control" 
+        id="dateTransfert" 
+        formControlName="dateTransfert"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="soldeRecouvrement" class="form-label">Solde de recouvrement</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="soldeRecouvrement" 
+        formControlName="soldeRecouvrement"
+        step="0.01"
+        min="0"
+      >
+  <div *ngIf="soldeRecouvrement?.errors?.['min']" class="text-danger">
+        Le solde ne peut pas être négatif
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="creerDebiteurForm.invalid">
+      Créer le débiteur
+    </button>
+  </form>
+</div>

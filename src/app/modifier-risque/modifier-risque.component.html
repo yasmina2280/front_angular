@@ -1,0 +1,127 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Modifier le Risque</h2>
+
+  <form [formGroup]="risqueForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="isLoading" class="alert alert-info">
+      Chargement des données...
+    </div>
+
+    <!-- Numéro (non modifiable) -->
+    <div class="form-group mb-3">
+      <label for="num">Numéro</label>
+      <input
+        type="text"
+        id="num"
+        class="form-control"
+        formControlName="num"
+        readonly
+      />
+    </div>
+
+    <!-- Solde Principale -->
+    <div class="form-group mb-3">
+      <label for="soldePrincipale">Solde Principale</label>
+      <input
+        type="number"
+        id="soldePrincipale"
+        class="form-control"
+        formControlName="soldePrincipale"
+        [class.is-invalid]="risqueForm.get('soldePrincipale')?.invalid && risqueForm.get('soldePrincipale')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="risqueForm.get('soldePrincipale')?.invalid && risqueForm.get('soldePrincipale')?.touched">
+        Champ requis
+      </div>
+    </div>
+
+    <!-- Montant Principale -->
+    <div class="form-group mb-3">
+      <label for="montantPrincipale">Montant Principale</label>
+      <input
+        type="number"
+        id="montantPrincipale"
+        class="form-control"
+        formControlName="montantPrincipale"
+        [class.is-invalid]="risqueForm.get('montantPrincipale')?.invalid && risqueForm.get('montantPrincipale')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="risqueForm.get('montantPrincipale')?.invalid && risqueForm.get('montantPrincipale')?.touched">
+        Champ requis
+      </div>
+    </div>
+
+    <!-- Intérêt Conventionnel -->
+    <div class="form-group mb-3">
+      <label for="interetConventionnel">Intérêt Conventionnel</label>
+      <input
+        type="number"
+        id="interetConventionnel"
+        class="form-control"
+        formControlName="interetConventionnel"
+        [class.is-invalid]="risqueForm.get('interetConventionnel')?.invalid && risqueForm.get('interetConventionnel')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="risqueForm.get('interetConventionnel')?.invalid && risqueForm.get('interetConventionnel')?.touched">
+        Champ requis
+      </div>
+    </div>
+
+    <!-- Montant Intérêt Retard -->
+    <div class="form-group mb-3">
+      <label for="montantInteretRetard">Montant Intérêt Retard</label>
+      <input
+        type="number"
+        id="montantInteretRetard"
+        class="form-control"
+        formControlName="montantInteretRetard"
+        [class.is-invalid]="risqueForm.get('montantInteretRetard')?.invalid && risqueForm.get('montantInteretRetard')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="risqueForm.get('montantInteretRetard')?.invalid && risqueForm.get('montantInteretRetard')?.touched">
+        Champ requis
+      </div>
+    </div>
+
+    <!-- Solde Intérêt Conventionnel -->
+    <div class="form-group mb-3">
+      <label for="soldeInteretConventionnel">Solde Intérêt Conventionnel</label>
+      <input
+        type="number"
+        id="soldeInteretConventionnel"
+        class="form-control"
+        formControlName="soldeInteretConventionnel"
+        [class.is-invalid]="risqueForm.get('soldeInteretConventionnel')?.invalid && risqueForm.get('soldeInteretConventionnel')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="risqueForm.get('soldeInteretConventionnel')?.invalid && risqueForm.get('soldeInteretConventionnel')?.touched">
+        Champ requis
+      </div>
+    </div>
+
+    <!-- Solde Intérêt Retard -->
+    <div class="form-group mb-3">
+      <label for="soldeInteretRetard">Solde Intérêt Retard</label>
+      <input
+        type="number"
+        id="soldeInteretRetard"
+        class="form-control"
+        formControlName="soldeInteretRetard"
+        [class.is-invalid]="risqueForm.get('soldeInteretRetard')?.invalid && risqueForm.get('soldeInteretRetard')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="risqueForm.get('soldeInteretRetard')?.invalid && risqueForm.get('soldeInteretRetard')?.touched">
+        Champ requis
+      </div>
+    </div>
+
+    <!-- Dossier ID (caché) -->
+    <input type="hidden" formControlName="dossierId" />
+
+    <!-- Nature ID (caché) -->
+    <input type="hidden" formControlName="natureId" />
+
+    <!-- Stade ID (caché) -->
+    <input type="hidden" formControlName="stadeId" />
+
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+      Enregistrer les modifications
+    </button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="router.navigate(['/gestion-recouvrement'])">
+      Annuler
+    </button>
+  </form>
+</div>

@@ -57,7 +57,8 @@ selectDebiteur(debiteur: any) {
 
   chargerDebiteurs(): void {
     this.debiteurService.getDebiteurs().subscribe({
-      next: (data) => this.debiteurs = data,
+      next: (data) =>
+       this.debiteurs = data.filter(d => d.rapporteur === null),
       error: (err) => console.error('Erreur lors du chargement des débiteurs', err)
     });
   }

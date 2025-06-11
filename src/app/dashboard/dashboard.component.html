@@ -84,8 +84,27 @@
       <div class="card-badge">6 frais ajouter</div>
     </div>
 
+      <!-- Nouvelle carte Calendrier -->
+    <div *ngIf="isFeesResponsible" class="dashboard-card" routerLink="/gestion-recouvrement" >
+      <div class="card-icon" style="background-color: #36b9cc;">
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <h3>Gestion recouvrement</h3>
+      <p>liste et validation</p>
+    </div>
+
     <!-- Nouvelle carte Documents -->
-    <div class="dashboard-card" routerLink="/documents">
+    <div class="dashboard-card" routerLink="/gestion-risque" *ngIf="authService.isAdmin()">
+      <div class="card-icon" style="background-color: #6f42c1;">
+        <i class="fas fa-file-contract"></i>
+      </div>
+      <h3>Gestion Risque</h3>
+      
+    </div>
+  </div>
+
+      <!-- Nouvelle carte Documents -->
+    <div class="dashboard-card" routerLink="/documents" >
       <div class="card-icon" style="background-color: #6f42c1;">
         <i class="fas fa-file-contract"></i>
       </div>
@@ -103,7 +122,7 @@
   </button>
   
   <button *ngIf="isFeesResponsible" class="quick-action-btn" (click)="navigateTo('lister-deb-rap')" >
-    <i class="fas fa-search"></i> Recherche avancée
+    <i class="fas fa-search"></i> Affacter rapporteur
   </button>
   
   <button *ngIf="isFeesResponsible" class="quick-action-btn">

@@ -20,6 +20,10 @@ import { AjouterDossierComponent } from './ajouter-dossier/ajouter-dossier.compo
 import { ListeUtilisateursComponent } from './liste-utilisateurs/liste-utilisateurs.component';
 import { ListeDebiteursComponent } from './liste-debiteurs/liste-debiteurs.component';
 import { FraisComponent } from './frais/frais.component';
+import { RecouvrementComponent } from './recouvrement/recouvrement.component';
+import { CreerDebiteurPersonneExistanteComponent } from './creer-debiteur-personne-existante/creer-debiteur-personne-existante.component';
+import { GestionRisqueComponent } from './gestion-risque/gestion-risque.component';
+import { ModifierRisqueComponent } from './modifier-risque/modifier-risque.component';
 
 const routes: Routes = [
  {
@@ -39,6 +43,8 @@ const routes: Routes = [
   { path: 'ajouter-dossier', component: AjouterDossierComponent},
   { path: 'lister-deb-rap', component: ListeUtilisateursComponent},
   { path: 'lister-debiteur', component: ListeDebiteursComponent},
+  { path: 'risques/modifier/:id', component: ModifierRisqueComponent},
+ 
 
   { path: 'unauthorized', component: UnauthorizedComponent },
 
@@ -48,9 +54,22 @@ const routes: Routes = [
     component: GestionDebiteurComponent 
   },
   { 
+    path: 'gestion-risque', 
+    component:GestionRisqueComponent
+  },
+  { 
     path: 'gestion-frais', 
     component:FraisComponent
   },
+    { 
+    path: 'gestion-recouvrement', 
+    component:RecouvrementComponent
+  },
+   { 
+    path: 'creerDebiteur', 
+    component:CreerDebiteurPersonneExistanteComponent
+  },
+
 
   { 
     path: 'debiteur-details', 

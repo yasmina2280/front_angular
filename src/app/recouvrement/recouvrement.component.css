@@ -1,0 +1,118 @@
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.card {
+  background: #ffffffb1;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.card p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.border {
+  background: #fcfffd52;
+  border: 1.5px solid #3498db;
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+
+.border p {
+  margin: 5px 0;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: #34495e;
+}
+
+input[type="number"].form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1.5px solid #bdc3c7;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"].form-control:focus {
+  border-color: #2980b9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+}
+
+button.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-success {
+  background-color: #27ae60;
+  color: white;
+}
+
+button.btn-success:hover {
+  background-color: #219150;
+}
+
+button.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.mt-2 {
+  margin-top: 12px !important;
+}
+
+.ms-2 {
+  margin-left: 12px !important;
+}
+
+h5 {
+  color: #2980b9;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+h6 {
+  color: #7f8c8d;
+  font-weight: 600;
+  margin-top: 15px;
+}

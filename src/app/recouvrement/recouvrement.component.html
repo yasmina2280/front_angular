@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Liste des Recouvrements</h2>
+  <div *ngFor="let rec of recouvrements" class="card mb-3 p-3">
+    <p><strong>Numéro du dossier :</strong> {{ rec.dossier?.numero }}</p>
+    <!-- <p><strong>Débiteur :</strong> {{ rec.debiteur?.personne?.nom }} {{ rec.debiteur?.personne?.prenom }}</p> -->
+    <p><strong>Montant:</strong> {{ rec.montant }} DT</p>
+    <p><strong>Date:</strong> {{ rec.dateVersement }}</p>
+    <p><strong>État:</strong> {{ rec.etat }}</p>
+
+    <div *ngIf="rec.etat === 'EN_ATTENTE'">
+      <h5>Répartition :</h5>
+      <div *ngFor="let risque of rec.dossier?.risques || []" class="border rounded p-2 mb-2">
+        <p><strong>Numéro:</strong> {{ risque.num }}</p>
+        <p><strong>Montant Principal:</strong> {{ risque.montantPrincipale }} DT</p>
+        <p><strong>Solde Principal:</strong> {{ risque.soldePrincipale }} DT</p>
+        <p><strong>Intérêt Conventionnel:</strong> {{ risque.interetConventionnel }} DT</p>
+        <p><strong>Solde Intérêt Conv.:</strong> {{ risque.soldeInteretConventionnel }} DT</p>
+        <p><strong>Intérêt de Retard:</strong> {{ risque.montantInteretRetard }} DT</p>
+        <p><strong>Solde Intérêt Retard:</strong> {{ risque.soldeInteretRetard }} DT</p>
+
+        <label><strong>Montant à affecter :</strong></label>
+        <input type="number" class="form-control"
+               (input)="setRepartitionFromEvent(rec.id, risque.id!, $event)">
+      </div>
+
+      <button class="btn btn-success mt-2" (click)="valider(rec)">Valider</button>
+      <button class="btn btn-danger mt-2 ms-2" (click)="refuser(rec.id)">Refuser</button>
+    </div>
+
+    <div *ngIf="rec.etat === 'VALIDE' || rec.etat === 'REFUSE'">
+      <h6>Répartition effectuée :</h6>
+      <ul>
+        <li *ngFor="let rr of rec.repartitions || []">
+          Risque {{ rr.risque?.num || rr.risque?.id }} : {{ rr.montantAffecte }} DT
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
