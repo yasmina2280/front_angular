@@ -8,6 +8,32 @@
     </div>
   </div>
 
+
+  
+ <div class="admin-notifications" *ngIf="authService.isAdmin()">
+  <h3><i class="fas fa-bell"></i> Notifications de Clôture</h3>
+  <div class="notification-list">
+    <div *ngFor="let risk of risksReadyForClosure" class="notification-item">
+      <div>
+        <p>Risque #{{risk.num}} - Montant principal: 0</p>
+        <p>Vérifiez les frais associés avant clôture</p>
+      </div>
+      <div class="notification-actions">
+        <button (click)="verifyRiskFees(risk.id)">
+          <i class="fas fa-search"></i> Vérifier
+        </button>
+        <button (click)="closeRisk(risk.id)">
+          <i class="fas fa-lock"></i> Clôturer
+        </button>
+      </div>
+    </div>
+    <div *ngIf="risksReadyForClosure?.length === 0" class="no-notifications">
+      <i class="far fa-check-circle"></i>
+      Aucun risque à clôturer pour le moment
+    </div>
+  </div>
+</div>
+
   <div class="quick-stats">
     <div class="stat-card">
       <div class="stat-value">24</div>

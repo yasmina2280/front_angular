@@ -9,6 +9,7 @@ import { Risque } from '../model/risque.model';
 
 @Injectable({
   providedIn: 'root'
+  
 })
 export class RisqueService {
   private apiUrl = `${environment.apiBaseUrl}/api/risques`;
@@ -78,6 +79,20 @@ getRisqueById(id: number): Observable<Risque> {
   });
 }
 
+
+  // Modifiez cette méthode pour utiliser le bon endpoint
+  getRisksWithZeroPrincipal(): Observable<Risque[]> {
+    return this.http.get<Risque[]>(`${this.apiUrl}/ready-for-closure`, {
+      headers: this.getAuthHeaders()
+    });
+  }
+
+  // Modifiez cette méthode pour utiliser le bon endpoint
+  closeRisk(riskId: number): Observable<Risque> {
+    return this.http.post<Risque>(`${this.apiUrl}/${riskId}/close`, {}, {
+      headers: this.getAuthHeaders()
+    });
+  }
 
 
 }

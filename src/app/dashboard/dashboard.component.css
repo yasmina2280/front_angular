@@ -205,14 +205,128 @@
 .quick-action-btn i {
   font-size: 16px;
 }
-
+/* Modern Notification Banner */
 .notifications-banner {
-  background: #f0f3ff;
-  color: #4e73df;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.notifications-banner i {
+  font-size: 18px;
+}
+
+/* Card-style Admin Notifications */
+.admin-notifications {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e3e6f0;
+}
+
+.admin-notifications h3 {
+  color: #2e3a59;
+  font-size: 18px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* Notification List */
+.notification-list {
+  margin-top: 15px;
+}
+
+.notification-item {
+  background-color: #f8fafc;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-left: none;
+}
+
+.notification-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.notification-item p {
+  margin: 0;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+.notification-item p:first-child {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.notification-item button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notification-item button i {
+  font-size: 14px;
+}
+
+.notification-item button:first-of-type {
+  background-color: #f6ad55;
+  color: white;
+}
+
+.notification-item button:first-of-type:hover {
+  background-color: #ed8936;
+}
+
+.notification-item button:last-of-type {
+  background-color: #48bb78;
+  color: white;
+}
+
+.notification-item button:last-of-type:hover {
+  background-color: #38a169;
+}
+
+.no-notifications {
+  text-align: center;
+  padding: 20px;
+  color: #718096;
+  font-size: 14px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.no-notifications i {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e0;
 }
